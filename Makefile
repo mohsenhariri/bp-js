@@ -1,17 +1,12 @@
 PATH := node_modules/.bin:${PATH}
+.PHONY: all dev clean dev pyserve
+include .env.dev
+export
+
 SRC = ./src
 DIST = ./dist
 PY = python3
 
-# ifneq (,$(wildcard ./.env))
-#     include .env
-#     export
-# endif
-
-ifneq (,$(wildcard ./.env.dev))
-    include .env.dev
-    export
-endif
 
 cert:
 		openssl req -x509 -new -config ./certs/openssl.conf -out ./certs/cert.pem -keyout ./certs/key.pem
@@ -30,5 +25,3 @@ build-prod:
 
 pyserve:
 		$(PY) -m http.server --directory $(DIST)
-
-.PHONY: all dev clean 
