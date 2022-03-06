@@ -1,19 +1,25 @@
-const fs = require("fs");
-const { env } = require("process");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
+const fs = require('fs')
+const {merge} = require('webpack-merge')
+const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
-    static: "./dist",
+    static: './dist',
     hot: true,
-    port: parseInt(env.PORT, 10),
-    http2: true,
-    https: {
-      key: fs.readFileSync("./certs/key.pem"),
-      cert: fs.readFileSync("./certs/cert.pem"),
+    host: process.env.HOST,
+    port: parseInt(process.env.PORT, 10),
+    http2: process.env.SSL === 'true',
+    https:
+      process.env.SSL === 'true'
+        ? {
+            key: fs.readFileSync('./certs/key.pem'),
+            cert: fs.readFileSync('./certs/cert.pem'),
+          }
+        : false,
+    devMiddleware: {
+      writeToDisk: process.env.writeToDisk === 'true',
     },
   },
   module: {
@@ -21,13 +27,13 @@ module.exports = merge(common, {
       {
         test: /\.tsx?$/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
           options: {
-            configFile: "tsconfig.dev.json",
+            configFile: 'tsconfig.dev.json',
           },
         },
         exclude: /node_modules/,
       },
     ],
   },
-});
+})

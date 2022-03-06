@@ -5,3 +5,6 @@ dist
 certs/*.pem
 
 README.md
+
+chrome-linux
+chrome-data-temp

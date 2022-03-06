@@ -1,18 +1,18 @@
-const canvasContainer = document.createElement("div") as HTMLDivElement;
-canvasContainer.setAttribute("id", "container");
-document.body.appendChild(canvasContainer);
-const canvas = document.createElement("canvas") as HTMLCanvasElement;
-canvas.textContent = "Your browser does not seem to support HTML5 canvas.";
-canvasContainer.appendChild(canvas);
-canvas.setAttribute("id", "canvas");
+const canvasContainer = document.createElement('div') as HTMLDivElement
+canvasContainer.setAttribute('id', 'container')
+document.body.appendChild(canvasContainer)
+const canvas = document.createElement('canvas') as HTMLCanvasElement
+canvas.textContent = 'Your browser does not seem to support HTML5 canvas.'
+canvasContainer.appendChild(canvas)
+canvas.setAttribute('id', 'canvas')
 
-const canvasW = (canvas.width = 300);
-const canvasH = (canvas.height = 600);
-const scaleW = 10;
-const scaleH = 10;
-const boardW = canvasW / scaleW; //30
-const boardH = canvasH / scaleH; //60
-const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+const canvasW = (canvas.width = 300)
+const canvasH = (canvas.height = 600)
+const scaleW = 10
+const scaleH = 10
+const boardW = canvasW / scaleW //30
+const boardH = canvasH / scaleH //60
+const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
 
 /*
 https://www.microfocus.com/documentation/silk-test/200/en/silktestworkbench-help-en/SILKTEST-21EEFF3F-DIFFERENCEBETWEENTEXTCONTENTSINNERTEXTINNERHTML-REF.html
