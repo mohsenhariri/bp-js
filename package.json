@@ -28,6 +28,7 @@
     "pyserve": "python3 -m http.server --directory ./dist"
   },
   "devDependencies": {
+    "@bubblewrap/cli": "^1.15.0",
     "css-loader": "^6.6.0",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.0",

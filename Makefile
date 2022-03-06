@@ -52,3 +52,6 @@ chrome:
 		--ignore-urlfetcher-cert-requests\
 		--unsafely-treat-insecure-origin-as-secure=$(URL)\
 		"$(URL)"
+
+twa:
+		bubblewrap init --manifest $(URL)/twa-manifest.json
